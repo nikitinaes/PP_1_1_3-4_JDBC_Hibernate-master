@@ -9,7 +9,7 @@ import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
 
-    private static final Connection connection = Util.getCon();
+    private static final Connection connection = Util.getConnection();
 
     public UserDaoJDBCImpl()  {
 
@@ -19,11 +19,9 @@ public class UserDaoJDBCImpl implements UserDao {
 
         try (Statement statement = connection.createStatement()) {
 
-            String create ="CREATE TABLE IF NOT EXISTS USER "+
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS USER "+
                     "(id BIGINT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(20), " +
-                    "lastName VARCHAR(30), AGE INT)";
-
-            statement.executeUpdate(create);
+                    "lastName VARCHAR(30), AGE INT)");
             System.out.println("Database has been created");
         } catch (SQLException e) {
             System.out.println("Failed to create a database");

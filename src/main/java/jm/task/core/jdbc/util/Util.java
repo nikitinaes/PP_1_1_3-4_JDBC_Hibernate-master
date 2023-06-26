@@ -11,11 +11,10 @@ public class Util {
     private static final String PASSWORD = "MySQLPizdets";
 
 
-    public static Connection getCon() {
+    public static Connection getConnection() {
         try {
 
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?autoReconnect=true&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC",
-                    "root", "MySQLPizdets");
+            return DriverManager.getConnection(URL, USERNAME, PASSWORD);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             System.out.println("couldn't connect!");
