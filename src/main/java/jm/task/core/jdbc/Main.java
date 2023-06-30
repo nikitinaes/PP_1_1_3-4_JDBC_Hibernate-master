@@ -11,13 +11,6 @@ import java.sql.SQLException;
 public class Main {
     public static void main(String[] args) {
 
-        //  UserDao userDao = new UserDaoJDBCImpl();
-//
-//        userDao.createUsersTable();
-//
-
-//
-//
         UserDao userDao = new UserDaoHibernateImpl();
         userDao.createUsersTable();
         userDao.saveUser("Name1", "LastName1", (byte) 20);
